@@ -1,0 +1,69 @@
+@model ToDo.MvcUI.Models.TaskViewModel
+
+@{
+    ViewData["Title"] = "Görev Düzenle";
+}
+<!-- görevin sahip olduğu değerleri listeleyip ardından kullanıcıya değiştirmesi için edit şansı veriyorum -->
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header" style="background-color: #fb6e02ff; color: white;">
+                <h4 class="mb-0"> Görev Düzenle</h4>
+            </div>
+            <div class="card-body">
+                <form asp-action="Edit" method="post">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="UserId" />
+                    
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Title" class="form-label">Başlık</label>
+                        <input asp-for="Title" class="form-control" placeholder="Görev başlığı" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Description" class="form-label">Açıklama</label>
+                        <textarea asp-for="Description" class="form-control" rows="4" 
+                                  placeholder="Görev açıklaması (opsiyonel)"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="State" class="form-label">Durum</label>
+                        <select asp-for="State" class="form-select">
+                            <option value="0">Beklemede</option>
+                            <option value="1">Devam Ediyor</option>
+                            <option value="2">Tamamlandı</option>
+                        </select>
+                        <span asp-validation-for="State" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="CategoryId" class="form-label">Kategori</label>
+                        <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.Categories">
+                            <option value="">Kategori Seçin</option>
+                        </select>
+                    </div>
+                    
+
+
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn " style="background-color: #fb6e02ff; color: white;">
+                            <i class="bi bi-check-circle"></i> Güncelle
+                        </button>
+                        <a asp-action="Index" class="btn btn-danger">
+                            <i class="bi bi-x-circle"></i> İptal
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
