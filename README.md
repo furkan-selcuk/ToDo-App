@@ -29,6 +29,14 @@ Modern ve kullanıcı dostu arayüze sahip, .NET teknolojileri ile geliştirilmi
     dotnet run --project ToDo.WebAPI
     dotnet run --project ToDo.MvcUI
     ```
+## 🔑 Test Kullanıcı
+
+Projeyi test etmek için hazır bir test kullanıcı kullanabilirsiniz:
+
+* **Kullanıcı Adı:** testuser  
+* **Şifre:** 123456
+
+Bu kullanıcı ile uygulamaya giriş yapabilir ve görev yönetimi özelliklerini deneyebilirsiniz.
 
 ---
 👋 **İyi Kodlamalar!**
